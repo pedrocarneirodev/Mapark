@@ -24,6 +24,7 @@ import {
   Roboto_900Black_Italic,
 } from "@expo-google-fonts/roboto";
 import { View } from "react-native";
+import ApresentationScreen from "./screens/Apresentation";
 
 const Stack = createNativeStackNavigator();
 
@@ -64,6 +65,7 @@ export default function App() {
     <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={defaultScreenOptions}>
+          <Stack.Screen name="APRESENTATION" component={ApresentationScreen} />
           <Stack.Screen name="LOGIN" component={LoginScreen} />
           <Stack.Screen name="SPLASH" component={SplashScreen} />
         </Stack.Navigator>

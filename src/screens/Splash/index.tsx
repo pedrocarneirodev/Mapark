@@ -4,7 +4,7 @@ import { CatolicaIcon, LogoIcon, Text } from "./styles";
 
 const SplashScreen = () => {
   return (
-    <GradientBackground>
+    <GradientBackground center>
       <LogoIcon />
       <Text>Powered by: </Text>
       <CatolicaIcon />
