@@ -14,7 +14,7 @@ const GradientBackground = ({
       center={center}
       colors={
         reverse
-          ? ["#000", "hsl(209, 79%, 21%)"].reverse()
+          ? ["#000", "hsl(209, 79%, 17%)"].reverse()
           : ["#000", "hsl(209, 79%, 21%)"]
       }
       start={{ x: 1, y: 0 }}

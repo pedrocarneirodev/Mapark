@@ -1,3 +1,5 @@
+import { StatusBar } from "expo-status-bar";
+
 import Button from "../../components/Button";
 import GradientBackground from "../../components/GradientBackground";
 import {
@@ -12,6 +14,7 @@ import {
 const ApresentationScreen = () => {
   return (
     <GradientBackground reverse>
+      <StatusBar translucent />
       <OuterCircle>
         <MiddleCircle>
           <InnerCircle>
