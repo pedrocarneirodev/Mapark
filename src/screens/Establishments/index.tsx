@@ -13,6 +13,7 @@ import {
   ItemBusy,
   Divider,
 } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 const DATA = [
   {
@@ -48,11 +49,13 @@ const DATA = [
 ];
 
 const EstablishmentsScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <GradientBackground>
       <StatusBar translucent />
       <Container>
-        <SearchNav />
+        <SearchNav onCloseIconPress={() => navigation.goBack()} />
         <Title>Estabelecimentos</Title>
         <FlatList
           data={DATA}

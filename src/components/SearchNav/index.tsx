@@ -2,11 +2,15 @@ import Close from "../../assets/svg/close.svg";
 
 import { Container, CloseContainer, Input, Divider } from "./styles";
 
-const SearchNav = () => {
+type SearchNavProps = {
+  onCloseIconPress: () => void;
+};
+
+const SearchNav = ({ onCloseIconPress }: SearchNavProps) => {
   return (
     <>
       <Container>
-        <CloseContainer>
+        <CloseContainer onPress={onCloseIconPress}>
           <Close />
         </CloseContainer>
 

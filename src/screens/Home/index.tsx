@@ -11,13 +11,16 @@ import {
 } from "./styles";
 import GridButtons from "../../components/GridButtons";
 import { View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <GradientBackground>
       <StatusBar translucent />
       <Container>
-        <Nav />
+        <Nav onSearchIconPress={() => navigation.navigate("ESTABLISHMENTS")} />
         <ImageContainer>
           <CarImage source={require("../../assets/img/mercedes.png")} />
           <ProgressBar

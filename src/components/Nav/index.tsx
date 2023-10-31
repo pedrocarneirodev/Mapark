@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import {
   Container,
   Right,
@@ -8,7 +8,11 @@ import {
   Text,
 } from "./styles";
 
-const Nav = () => {
+type NavProps = {
+  onSearchIconPress: () => void;
+};
+
+const Nav = ({ onSearchIconPress }: NavProps) => {
   return (
     <Container>
       <Right>
@@ -20,9 +24,9 @@ const Nav = () => {
           <Text>Merces-Benz GLA-250</Text>
         </View>
       </Right>
-      <View>
+      <TouchableOpacity onPress={onSearchIconPress}>
         <SearchIcon />
-      </View>
+      </TouchableOpacity>
     </Container>
   );
 };

@@ -33,6 +33,7 @@ const Stack = createNativeStackNavigator();
 const defaultScreenOptions: NativeStackNavigationOptions = {
   headerShown: false,
   navigationBarColor: "transparent",
+  animation: "slide_from_right",
 };
 
 ExpoSplashScreen.preventAutoHideAsync();
@@ -67,11 +68,11 @@ export default function App() {
     <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={defaultScreenOptions}>
+          <Stack.Screen name="HOME" component={HomeScreen} />
           <Stack.Screen
             name="ESTABLISHMENTS"
             component={EstablishmentsScreen}
           />
-          <Stack.Screen name="HOME" component={HomeScreen} />
           <Stack.Screen name="LOGIN" component={LoginScreen} />
           <Stack.Screen name="APRESENTATION" component={ApresentationScreen} />
           <Stack.Screen name="SPLASH" component={SplashScreen} />
