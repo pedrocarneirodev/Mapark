@@ -9,9 +9,12 @@ import {
   ProgressBar,
   Counter,
 } from "./styles";
-import GridButtons from "../../components/GridButtons";
 import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import FreePeriodGridButtons from "../../components/FreePeriodGridButtons";
+import WaitingPaymentGridButtons from "../../components/WaitingPaymentGridButtons";
+
+const MODE: string = "WAITING_PAYMENT";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -27,10 +30,12 @@ const HomeScreen = () => {
             source={require("../../assets/img/progress-bar-white.png")}
             resizeMode="contain"
           />
-          <Counter>10:00</Counter>
+          {MODE == "NORMAL" && <Counter>10:00</Counter>}
         </ImageContainer>
         <View style={{ flex: 1 }} />
-        <GridButtons />
+        {MODE === "NORMAL" && <FreePeriodGridButtons />}
+        {MODE === "WAITING_PAYMENT" && <WaitingPaymentGridButtons />}
+        {MODE === "FREE_PERIOD" && <FreePeriodGridButtons />}
       </Container>
     </GradientBackground>
   );

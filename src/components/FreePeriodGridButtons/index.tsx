@@ -11,7 +11,7 @@ import {
   AlertArea,
 } from "./styles";
 
-const GridButtons = () => {
+const FreePeriodGridButtons = () => {
   return (
     <View>
       <NotificationArea>
@@ -42,4 +42,4 @@ const GridButtons = () => {
   );
 };
 
-export default GridButtons;
+export default FreePeriodGridButtons;
