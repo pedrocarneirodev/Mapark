@@ -29,7 +29,7 @@ const WaitingPaymentGridButtons = () => {
 
       <Row>
         <Box>
-          <BoxTitle>Agendar{"\n"}Estacionamento</BoxTitle>
+          <BoxTitle>Agendamento</BoxTitle>
         </Box>
         <Box>
           <BoxTitle>Histórico atividades</BoxTitle>

@@ -19,7 +19,7 @@ export const Title = styled.Text`
 `;
 
 export const Item = styled.TouchableOpacity`
-  background-color: hsla(0, 0%, 85%, 0.25);
+  background-color: hsla(0, 0%, 85%, 0.15);
   border-radius: 10px;
   margin-bottom: 26px;
 `;
