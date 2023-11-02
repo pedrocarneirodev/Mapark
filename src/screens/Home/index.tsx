@@ -27,8 +27,8 @@ const HomeScreen = () => {
   const navigation = useNavigation();
   const bottomSheetRef = useRef<BottomSheet>(null);
 
-  const handleViewDetailsPress = () => {
-    bottomSheetRef.current?.collapse();
+  const handleServiceSeeMorePress = () => {
+    bottomSheetRef.current?.expand();
   };
 
   return (
@@ -56,16 +56,11 @@ const HomeScreen = () => {
                 <>
                   <TotalValueLabel>Valor total:</TotalValueLabel>
                   <Value>R$16,92</Value>
-                  <Button
-                    onPress={handleViewDetailsPress}
-                    label="Ver detalhes"
-                    variant="info"
-                    height={60}
-                  />
+                  <Button label="Ver detalhes" variant="info" height={60} />
                 </>
               )}
             </ImageContainer>
-            <ServicesGridButtons />
+            <ServicesGridButtons onPressSeeMore={handleServiceSeeMorePress} />
             <View style={{ marginTop: 38 }} />
             <LastActivity />
           </Container>

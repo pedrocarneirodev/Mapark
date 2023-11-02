@@ -5,10 +5,11 @@ export const Container = styled.View`
   padding: 28px 16px;
 `;
 
-export const Row = styled.View`
+export const Row = styled.View<{ center?: boolean }>`
   flex: 1;
   display: flex;
   flex-direction: row;
+  ${({ center }) => center && "align-items: center;"}
   gap: 16px;
 `;
 
@@ -19,7 +20,7 @@ export const Col = styled.View`
   gap: 16px;
 `;
 
-export const Box = styled.View<{
+export const Box = styled.TouchableOpacity<{
   size: "big" | "small";
   color: "dark" | "light";
 }>`
@@ -33,19 +34,32 @@ export const Box = styled.View<{
   align-items: center;
 `;
 
-export const WarnBox = styled.View`
+export const WarnBox = styled.TouchableOpacity`
   height: 82px;
   margin-top: 20px;
   background-color: hsla(40, 91%, 48%, 1);
   border-radius: 15px;
+  padding: 12px;
 `;
 
-export const Title = styled.Text<{ center?: boolean }>`
+export const Title = styled.Text<{
+  center?: boolean;
+  size?: "big";
+  black?: boolean;
+}>`
   font-family: "Roboto_700Bold";
-  font-size: 14px;
+  font-size: ${({ size }) => (size === "big" ? 20 : 14)}px;
 
-  color: white;
-  text-align: ${({ center }) => center && "center"};
+  color: ${({ black }) => (black ? "black" : "white")};
+  text-align: ${({ center }) => (center ? "center" : "left")};
+`;
+
+export const WarnDescription = styled.Text`
+  font-family: "Roboto_500Medium";
+  font-size: 14px;
+  color: black;
+  text-align: center;
+  margin-top: 6px;
 `;
 
 export const LocationText = styled.Text`

@@ -10,12 +10,18 @@ import {
   LockIcon,
 } from "./styles";
 
-const ServicesGridButtons = () => {
+type ServicesGridButtons = {
+  onPressSeeMore: () => void;
+};
+
+const ServicesGridButtons = (props: ServicesGridButtons) => {
+  const { onPressSeeMore } = props;
+
   return (
     <View>
       <Row center>
         <Title>Serviços</Title>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPressSeeMore}>
           <KnowMore>Ver mais {">"}</KnowMore>
         </TouchableOpacity>
       </Row>
