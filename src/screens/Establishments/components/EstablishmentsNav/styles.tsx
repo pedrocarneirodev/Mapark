@@ -7,9 +7,21 @@ export const Container = styled.View`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 24px;
 
   width: 100%;
+
+  margin-top: 12px;
+`;
+
+export const Title = styled.Text`
+  font-family: "Roboto_500Medium";
+  font-size: 20px;
+  text-align: center;
+
+  color: white;
+
+  margin-top: 8px;
+  margin-bottom: 32px;
 `;
 
 export const CloseContainer = styled.TouchableOpacity`
@@ -40,4 +52,5 @@ export const Divider = styled.View`
   width: 100%;
   background-color: hsla(0, 0%, 100%, 0.4);
   border-radius: 2px;
+  margin-bottom: 12px;
 `;

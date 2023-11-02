@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { FlatList } from "react-native";
 
 import GradientBackground from "../../components/GradientBackground";
-import SearchNav from "../../components/SearchNav";
+import EstablishmentsNav from "./components/EstablishmentsNav";
 import {
   Container,
   Title,
@@ -14,6 +14,7 @@ import {
   Divider,
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const DATA = [
   {
@@ -53,24 +54,22 @@ const EstablishmentsScreen = () => {
 
   return (
     <GradientBackground>
-      <StatusBar translucent />
+      <StatusBar translucent style="light" />
       <Container>
-        <SearchNav onCloseIconPress={() => navigation.goBack()} />
-        <Title>Estabelecimentos</Title>
-        <FlatList
-          data={DATA}
-          renderItem={({ item }) => (
-            <Item>
-              <ItemName>{item.name}</ItemName>
-              <ItemBottom>
-                <ItemLocation>{item.location}</ItemLocation>
-                <Divider />
-                <ItemBusy>Movimento: {item.busy}</ItemBusy>
-              </ItemBottom>
-            </Item>
-          )}
-          keyExtractor={(item) => item.id}
-        />
+        <SafeAreaView>
+          <EstablishmentsNav onCloseIconPress={() => navigation.goBack()} />
+        </SafeAreaView>
+
+        {DATA.map((item) => (
+          <Item key={item.id}>
+            <ItemName>{item.name}</ItemName>
+            <ItemBottom>
+              <ItemLocation>{item.location}</ItemLocation>
+              <Divider />
+              <ItemBusy>Movimento: {item.busy}</ItemBusy>
+            </ItemBottom>
+          </Item>
+        ))}
       </Container>
     </GradientBackground>
   );

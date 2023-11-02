@@ -1,8 +1,9 @@
 import styled from "styled-components/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export const Container = styled(SafeAreaView)`
+export const Container = styled.ScrollView`
   flex: 1;
+  width: 100%;
   padding-left: 18px;
   padding-right: 18px;
 `;
