@@ -4,9 +4,10 @@ import {
   Right,
   UserIcon,
   UserIconChar,
-  SearchIcon,
-  Text,
+  LocationText,
+  WellcomeText,
 } from "./styles";
+import Input from "../Input";
 
 type NavProps = {
   onSearchIconPress: () => void;
@@ -14,20 +15,21 @@ type NavProps = {
 
 const Nav = ({ onSearchIconPress }: NavProps) => {
   return (
-    <Container>
-      <Right>
+    <>
+      <Container>
+        <Right>
+          <View>
+            <LocationText>Taguatinga, Brazil</LocationText>
+            <WellcomeText>Bem-vindo, Pedro!</WellcomeText>
+          </View>
+        </Right>
         <UserIcon>
           <UserIconChar>P</UserIconChar>
         </UserIcon>
-        <View>
-          <Text>Olá, Pedro!</Text>
-          <Text>Merces-Benz GLA-250</Text>
-        </View>
-      </Right>
-      <TouchableOpacity onPress={onSearchIconPress}>
-        <SearchIcon />
-      </TouchableOpacity>
-    </Container>
+      </Container>
+      <View style={{ marginBottom: 24 }} />
+      <Input />
+    </>
   );
 };
 

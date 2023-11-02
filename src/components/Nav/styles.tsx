@@ -1,7 +1,5 @@
 import styled from "styled-components/native";
 
-import Search from "../../assets/svg/search.svg";
-
 export const Container = styled.View`
   display: flex;
   flex-direction: row;
@@ -32,10 +30,15 @@ export const UserIconChar = styled.Text`
   font-size: 24px;
 `;
 
-export const SearchIcon = styled(Search)``;
-
-export const Text = styled.Text`
-  color: white;
+export const LocationText = styled.Text`
+  color: hsla(0, 0%, 100%, 0.6);
   font-size: 14px;
+  font-family: "Roboto_400Regular";
+  padding-bottom: 2px;
+`;
+
+export const WellcomeText = styled.Text`
+  color: white;
+  font-size: 18px;
   font-family: "Roboto_400Regular";
 `;

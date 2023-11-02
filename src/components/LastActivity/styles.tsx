@@ -39,7 +39,7 @@ export const Box = styled.View.attrs({
   background-color: #d9d9d909;
   border-radius: 10px;
   padding: 14px;
-  margin-bottom: 18;
+  margin-bottom: 18px;
 
   flex: 1;
   justify-content: space-between;

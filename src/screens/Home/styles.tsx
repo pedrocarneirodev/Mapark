@@ -16,7 +16,7 @@ export const ImageContainer = styled.View`
   display: flex;
   align-items: center;
 
-  margin-top: 4px;
+  margin-top: 12px;
   margin-bottom: 32px;
 
   position: relative;
