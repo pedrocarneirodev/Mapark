@@ -37,9 +37,7 @@ const HomeScreen = () => {
         <Scroll>
           <StatusBar translucent style="light" />
           <Container>
-            <Nav
-              onSearchIconPress={() => navigation.navigate("ESTABLISHMENTS")}
-            />
+            <Nav />
             <ImageContainer>
               <CarImage source={require("../../assets/img/mercedes.png")} />
               <ProgressBar

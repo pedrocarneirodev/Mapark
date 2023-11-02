@@ -9,6 +9,7 @@ import {
   ParkingIcon,
   LockIcon,
 } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 type ServicesGridButtons = {
   onPressSeeMore: () => void;
@@ -16,6 +17,7 @@ type ServicesGridButtons = {
 
 const ServicesGridButtons = (props: ServicesGridButtons) => {
   const { onPressSeeMore } = props;
+  const navigation = useNavigation();
 
   return (
     <View>
@@ -27,7 +29,10 @@ const ServicesGridButtons = (props: ServicesGridButtons) => {
       </Row>
 
       <Row>
-        <TouchableOpacity style={{ flex: 1 }}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("ESTABLISHMENTS")}
+          style={{ flex: 1 }}
+        >
           <Box>
             <ParkingIcon />
             <BoxTitle>Encontrar estacionamento</BoxTitle>

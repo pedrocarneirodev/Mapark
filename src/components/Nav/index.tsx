@@ -1,4 +1,4 @@
-import { TouchableOpacity, View } from "react-native";
+import { Platform, TouchableOpacity, View } from "react-native";
 import {
   Container,
   Right,
@@ -8,12 +8,15 @@ import {
   WellcomeText,
 } from "./styles";
 import Input from "../Input";
+import { useNavigation } from "@react-navigation/native";
 
-type NavProps = {
-  onSearchIconPress: () => void;
-};
+const Nav = () => {
+  const navigation = useNavigation();
 
-const Nav = ({ onSearchIconPress }: NavProps) => {
+  const isAndroid = Platform.OS === "android";
+
+  const onInputPress = () => navigation.navigate("ESTABLISHMENTS");
+
   return (
     <>
       <Container>
@@ -28,7 +31,13 @@ const Nav = ({ onSearchIconPress }: NavProps) => {
         </UserIcon>
       </Container>
       <View style={{ marginBottom: 24 }} />
-      <Input />
+      {isAndroid ? (
+        <TouchableOpacity onPress={onInputPress}>
+          <Input editable={false} />
+        </TouchableOpacity>
+      ) : (
+        <Input editable={false} onPressIn={onInputPress} />
+      )}
     </>
   );
 };
