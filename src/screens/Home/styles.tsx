@@ -33,8 +33,17 @@ export const ProgressBar = styled.Image`
   top: 125px;
 `;
 
-export const Counter = styled.Text`
-  margin-top: 6px;
+export const TotalValueLabel = styled.Text`
+  margin-top: 16px;
+  color: hsla(0, 0%, 100%, 1);
+
+  font-family: "Roboto_500Medium";
+  font-size: 14px;
+`;
+
+export const Value = styled.Text<{ hasMarginTop?: boolean }>`
+  margin-top: ${({ hasMarginTop }) => (hasMarginTop ? 16 : 4)}px;
+  margin-bottom: 18px;
 
   color: white;
 

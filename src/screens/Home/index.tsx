@@ -1,4 +1,6 @@
+import { View } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { useNavigation } from "@react-navigation/native";
 
 import Nav from "../../components/Nav";
 import GradientBackground from "../../components/GradientBackground";
@@ -8,14 +10,14 @@ import {
   ImageContainer,
   CarImage,
   ProgressBar,
-  Counter,
+  Value,
+  TotalValueLabel,
 } from "./styles";
-import { useNavigation } from "@react-navigation/native";
 import ServicesGridButtons from "../../components/ServicesGridButtons";
 import LastActivity from "../../components/LastActivity";
-import { View } from "react-native";
+import Button from "../../components/Button";
 
-const MODE: string = "WAITING_PAYMENT"; // "NORMAT" | "FREE_PERIOD"
+const MODE: string = "WAITING_PAYMENT"; // "NORMAL" | "FREE_PERIOD"
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -34,7 +36,19 @@ const HomeScreen = () => {
               source={require("../../assets/img/progress-bar-white.png")}
               resizeMode="contain"
             />
-            {MODE == "NORMAL" && <Counter>10:00</Counter>}
+            {MODE == "FREE_PERIOD" && (
+              <>
+                <Value hasMarginTop>10:00</Value>
+                <Button label="Tempo ativado" variant="success" />
+              </>
+            )}
+            {MODE == "WAITING_PAYMENT" && (
+              <>
+                <TotalValueLabel>Valor total:</TotalValueLabel>
+                <Value>R$16,92</Value>
+                <Button label="Ver detalhes" variant="info" height={60} />
+              </>
+            )}
           </ImageContainer>
           <ServicesGridButtons />
           <View style={{ marginTop: 38 }} />
