@@ -27,6 +27,7 @@ import { View } from "react-native";
 import ApresentationScreen from "./screens/Apresentation";
 import HomeScreen from "./screens/Home";
 import EstablishmentsScreen from "./screens/Establishments";
+import PaymentDetailsScreen from "./screens/PaymentDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -76,6 +77,10 @@ export default function App() {
           <Stack.Screen name="LOGIN" component={LoginScreen} />
           <Stack.Screen name="APRESENTATION" component={ApresentationScreen} />
           <Stack.Screen name="SPLASH" component={SplashScreen} />
+          <Stack.Screen
+            name="PAYMENT_DETAILS"
+            component={PaymentDetailsScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </View>

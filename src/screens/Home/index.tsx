@@ -54,7 +54,12 @@ const HomeScreen = () => {
                 <>
                   <TotalValueLabel>Valor total:</TotalValueLabel>
                   <Value>R$16,92</Value>
-                  <Button label="Ver detalhes" variant="info" height={60} />
+                  <Button
+                    label="Ver detalhes"
+                    variant="info"
+                    height={60}
+                    onPress={() => navigation.navigate("PAYMENT_DETAILS")}
+                  />
                 </>
               )}
             </ImageContainer>

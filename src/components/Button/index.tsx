@@ -1,4 +1,4 @@
-import { TouchableOpacity } from "react-native";
+import { DimensionValue, TouchableOpacity } from "react-native";
 import { Container, Text } from "./styles";
 
 type ButtonProps = {
@@ -6,6 +6,7 @@ type ButtonProps = {
   onPress?: () => void;
   variant?: "danger" | "success" | "warning" | "info";
   height?: number;
+  width?: DimensionValue;
 };
 
 const Button = ({
@@ -13,6 +14,7 @@ const Button = ({
   onPress,
   variant = "info",
   height = 70,
+  width = "100%",
 }: ButtonProps) => {
   const getColors = () => {
     if (variant === "info") {
@@ -25,10 +27,7 @@ const Button = ({
   };
 
   return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={{ height: height, width: "100%" }}
-    >
+    <TouchableOpacity onPress={onPress} style={{ height: height, width }}>
       <Container colors={getColors()}>
         <Text>{label}</Text>
       </Container>
