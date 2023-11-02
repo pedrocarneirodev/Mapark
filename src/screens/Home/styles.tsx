@@ -1,8 +1,13 @@
 import styled from "styled-components/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+export const Scroll = styled.ScrollView`
+  width: 100%;
+`;
+
 export const Container = styled(SafeAreaView)`
   flex: 1;
+  width: 100%;
   padding-left: 18px;
   padding-right: 18px;
 `;
@@ -12,6 +17,7 @@ export const ImageContainer = styled.View`
   align-items: center;
 
   margin-top: 4px;
+  margin-bottom: 32px;
 
   position: relative;
 `;
