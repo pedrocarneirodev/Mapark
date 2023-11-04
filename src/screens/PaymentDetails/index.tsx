@@ -55,7 +55,12 @@ const PaymentDetailsScreen = () => {
         <View style={{ flex: 1 }} />
 
         <BottomContainer>
-          <Button label="Pagar" height={60} width={260} />
+          <Button
+            label="Pagar"
+            height={60}
+            width={260}
+            onPress={() => navigation.navigate("PAYMENT_TAKE_PHOTO")}
+          />
         </BottomContainer>
 
         <View style={{ marginTop: 24 }} />

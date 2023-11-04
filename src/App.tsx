@@ -28,6 +28,7 @@ import ApresentationScreen from "./screens/Apresentation";
 import HomeScreen from "./screens/Home";
 import EstablishmentsScreen from "./screens/Establishments";
 import PaymentDetailsScreen from "./screens/PaymentDetails";
+import PaymentTakePhotoScreen from "./screens/PaymentTakePhoto";
 
 const Stack = createNativeStackNavigator();
 
@@ -80,6 +81,11 @@ export default function App() {
           <Stack.Screen
             name="PAYMENT_DETAILS"
             component={PaymentDetailsScreen}
+          />
+          <Stack.Screen
+            name="PAYMENT_TAKE_PHOTO"
+            component={PaymentTakePhotoScreen}
+            options={{ gestureEnabled: false }}
           />
         </Stack.Navigator>
       </NavigationContainer>

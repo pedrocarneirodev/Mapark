@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Linking, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
 
@@ -17,15 +17,30 @@ import ServicesGridButtons from "../../components/ServicesGridButtons";
 import LastActivity from "../../components/LastActivity";
 import Button from "../../components/Button";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { useMemo, useRef } from "react";
+import { useEffect, useRef } from "react";
 import ParkingDetailsBottomSheet from "../../components/ParkingDetailsBottomSheet";
 import BottomSheet from "@gorhom/bottom-sheet";
+import { useCameraPermission } from "react-native-vision-camera";
 
 const MODE: string = "WAITING_PAYMENT"; // "NORMAL" | "FREE_PERIOD"
 
 const HomeScreen = () => {
   const navigation = useNavigation();
   const bottomSheetRef = useRef<BottomSheet>(null);
+  const { hasPermission, requestPermission } = useCameraPermission();
+
+  const askCameraPermission = async () => {
+    if (hasPermission === false) {
+      const askPermission = await requestPermission();
+      if (askPermission === false) {
+        await Linking.openSettings();
+      }
+    }
+  };
+
+  useEffect(() => {
+    askCameraPermission();
+  }, []);
 
   const handleServiceSeeMorePress = () => {
     bottomSheetRef.current?.expand();
