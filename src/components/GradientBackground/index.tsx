@@ -5,11 +5,15 @@ const GradientBackground = ({
   center,
   reverse,
   customColors,
+  start,
+  end,
 }: {
   children: React.ReactNode;
   center?: boolean;
   reverse?: boolean;
   customColors?: string[];
+  start?: { x: number; y: number };
+  end?: { x: number; y: number };
 }) => {
   const getColors = () => {
     if (customColors) {
@@ -25,8 +29,8 @@ const GradientBackground = ({
     <Container
       center={center}
       colors={getColors()}
-      start={{ x: 1, y: 0 }}
-      end={{ x: 0, y: 1 }}
+      start={start ?? { x: 1, y: 0 }}
+      end={end ?? { x: 0, y: 1 }}
       locations={[0.3, 1]}
     >
       {children}

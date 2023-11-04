@@ -26,7 +26,7 @@ const Nav = () => {
             <WellcomeText>Bem-vindo, Pedro!</WellcomeText>
           </View>
         </Right>
-        <UserIcon>
+        <UserIcon onPress={() => navigation.navigate("ACCOUNT")}>
           <UserIconChar>P</UserIconChar>
         </UserIcon>
       </Container>

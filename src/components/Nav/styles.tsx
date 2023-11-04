@@ -13,7 +13,7 @@ export const Right = styled.View`
   flex-direction: row;
 `;
 
-export const UserIcon = styled.View`
+export const UserIcon = styled.TouchableOpacity`
   height: 42px;
   aspect-ratio: 1;
   border-radius: 21px;
