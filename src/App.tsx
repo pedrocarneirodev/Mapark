@@ -30,6 +30,7 @@ import EstablishmentsScreen from "./screens/Establishments";
 import PaymentDetailsScreen from "./screens/PaymentDetails";
 import PaymentTakePhotoScreen from "./screens/PaymentTakePhoto";
 import AccountScreen from "./screens/Account";
+import HistoryScreen from "./screens/History";
 
 const Stack = createNativeStackNavigator();
 
@@ -89,6 +90,7 @@ export default function App() {
             options={{ gestureEnabled: false }}
           />
           <Stack.Screen name="ACCOUNT" component={AccountScreen} />
+          <Stack.Screen name="HISTORY" component={HistoryScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>

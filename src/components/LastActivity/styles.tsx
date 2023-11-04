@@ -5,6 +5,7 @@ import Map from "../../assets/svg/map.svg";
 import Parking from "../../assets/svg/parking.svg";
 import { Platform } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import GradientBackground from "../GradientBackground";
 
 const isAndroid = Platform.OS === "android";
 
@@ -36,6 +37,16 @@ export const Box = styled.View.attrs({
   shadowOpacity: 1,
   shadowRadius: 25,
 } as any)`
+  background-color: #d9d9d909;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 18px;
+
+  flex: 1;
+  justify-content: space-between;
+`;
+
+export const GradientBox = styled(LinearGradient)`
   background-color: #d9d9d909;
   border-radius: 10px;
   padding: 14px;

@@ -3,6 +3,7 @@ import {
   Title,
   Row,
   Box,
+  GradientBox,
   BoxTitle,
   RegularText,
   ThinText,
@@ -11,15 +12,34 @@ import {
   EstableshmentIcon,
   KnowMore,
 } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
-const LastActivity = () => {
+type LastActivityProps = {
+  hideSeeMore?: boolean;
+  lastActivityGradientVariant?: boolean;
+};
+
+const LastActivity = ({
+  hideSeeMore,
+  lastActivityGradientVariant,
+}: LastActivityProps) => {
+  const navigation = useNavigation();
+
+  const FirstBox = lastActivityGradientVariant
+    ? ({ children }: any) => (
+        <GradientBox colors={["hsl(209, 79%, 21%)", "#000"]} locations={[0, 1]}>
+          {children}
+        </GradientBox>
+      )
+    : Box;
+
   return (
     <View>
       <Row center>
         <Title>Atividade anterior</Title>
       </Row>
 
-      <Box>
+      <FirstBox>
         <BoxTitle>COCO BAMBU</BoxTitle>
         <Row center>
           <View>
@@ -28,7 +48,7 @@ const LastActivity = () => {
           </View>
           <ValueText>R$19,24</ValueText>
         </Row>
-      </Box>
+      </FirstBox>
 
       <TouchableOpacity>
         <Row center>
@@ -60,9 +80,11 @@ const LastActivity = () => {
         </Row>
       </TouchableOpacity>
 
-      <TouchableOpacity>
-        <KnowMore>Ver mais</KnowMore>
-      </TouchableOpacity>
+      {!hideSeeMore && (
+        <TouchableOpacity onPress={() => navigation.navigate("HISTORY")}>
+          <KnowMore>Ver mais</KnowMore>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
