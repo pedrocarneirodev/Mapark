@@ -21,6 +21,7 @@ import { useEffect, useRef } from "react";
 import ParkingDetailsBottomSheet from "../../components/ParkingDetailsBottomSheet";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useCameraPermission } from "react-native-vision-camera";
+import { requestForegroundPermissionsAsync } from "expo-location";
 
 const MODE: string = "WAITING_PAYMENT"; // "NORMAL" | "FREE_PERIOD"
 
@@ -35,6 +36,12 @@ const HomeScreen = () => {
       if (askPermission === false) {
         await Linking.openSettings();
       }
+    }
+
+    let { status } = await requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      await Linking.openSettings();
+      return;
     }
   };
 

@@ -13,6 +13,7 @@ import {
 import { View } from "react-native";
 
 import QrCode from "../../assets/svg/qrcode.svg";
+import MapButton from "../MapButton";
 
 const ParkingDetailsBottomSheet = forwardRef<BottomSheet, {}>((_props, ref) => {
   const snapPoints = useMemo(() => ["25%", "50%"], []);
@@ -48,7 +49,9 @@ const ParkingDetailsBottomSheet = forwardRef<BottomSheet, {}>((_props, ref) => {
                 <Title>Escanear{"\n"}QRcode</Title>
               </Row>
             </Box>
-            <Box size="big" color="light"></Box>
+            <Box size="big" color="light">
+              <MapButton />
+            </Box>
           </Col>
         </Row>
 
