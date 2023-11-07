@@ -31,6 +31,7 @@ import PaymentDetailsScreen from "./screens/PaymentDetails";
 import PaymentTakePhotoScreen from "./screens/PaymentTakePhoto";
 import AccountScreen from "./screens/Account";
 import HistoryScreen from "./screens/History";
+import MapScreen from "./screens/Map";
 
 const Stack = createNativeStackNavigator();
 
@@ -73,6 +74,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator screenOptions={defaultScreenOptions}>
           <Stack.Screen name="HOME" component={HomeScreen} />
+          <Stack.Screen name="MAP" component={MapScreen} />
           <Stack.Screen
             name="ESTABLISHMENTS"
             component={EstablishmentsScreen}
