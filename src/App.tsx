@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import * as ExpoSplashScreen from "expo-splash-screen";
-import { NavigationContainer } from "@react-navigation/native";
+import { LinkingOptions, NavigationContainer } from "@react-navigation/native";
 import {
   NativeStackNavigationOptions,
   createNativeStackNavigator,
@@ -34,6 +34,17 @@ import HistoryScreen from "./screens/History";
 import MapScreen from "./screens/Map";
 
 const Stack = createNativeStackNavigator();
+
+const linking: LinkingOptions<ReactNavigation.RootParamList> = {
+  prefixes: ["parking://"],
+  config: {
+    screens: {
+      HOME: {
+        path: "deeplink/:ticketCode",
+      },
+    },
+  },
+};
 
 const defaultScreenOptions: NativeStackNavigationOptions = {
   headerShown: false,
@@ -71,9 +82,9 @@ export default function App() {
 
   return (
     <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
-      <NavigationContainer>
+      <NavigationContainer linking={linking}>
         <Stack.Navigator screenOptions={defaultScreenOptions}>
-          <Stack.Screen name="HOME" component={HomeScreen} />
+          <Stack.Screen name="HOME" component={HomeScreen as any} />
           <Stack.Screen name="MAP" component={MapScreen} />
           <Stack.Screen
             name="ESTABLISHMENTS"

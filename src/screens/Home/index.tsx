@@ -25,7 +25,15 @@ import { requestForegroundPermissionsAsync } from "expo-location";
 
 const MODE: string = "WAITING_PAYMENT"; // "NORMAL" | "FREE_PERIOD"
 
-const HomeScreen = () => {
+type HomeScreenProps = {
+  route: {
+    params: {
+      ticketCode: string;
+    };
+  };
+};
+
+const HomeScreen = (props: HomeScreenProps) => {
   const navigation = useNavigation();
   const bottomSheetRef = useRef<BottomSheet>(null);
   const { hasPermission, requestPermission } = useCameraPermission();
@@ -48,6 +56,15 @@ const HomeScreen = () => {
   useEffect(() => {
     askCameraPermission();
   }, []);
+
+  useEffect(() => {
+    const hasTicketCode = props.route.params.ticketCode;
+
+    if (hasTicketCode) {
+      //register in db
+      // update home state
+    }
+  }, [props]);
 
   const handleServiceSeeMorePress = () => {
     bottomSheetRef.current?.expand();
