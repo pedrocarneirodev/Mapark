@@ -58,7 +58,7 @@ const HomeScreen = (props: HomeScreenProps) => {
   }, []);
 
   useEffect(() => {
-    const hasTicketCode = props.route.params.ticketCode;
+    const hasTicketCode = props.route.params?.ticketCode;
 
     if (hasTicketCode) {
       //register in db
