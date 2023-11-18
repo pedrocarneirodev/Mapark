@@ -25,6 +25,7 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import { useCameraPermission } from "react-native-vision-camera";
 import { requestForegroundPermissionsAsync } from "expo-location";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import FreePeriodModal from "../../components/FreePeriodModal";
 
 type HomeScreenProps = {
   route: {
@@ -45,6 +46,7 @@ const HomeScreen = (props: HomeScreenProps) => {
     minutes: "00",
     seconds: "00",
   });
+  const [showFreePeriodModal, setShowFreePeriodModal] = useState(false);
   const { hasPermission, requestPermission } = useCameraPermission();
 
   const askCameraPermission = async () => {
@@ -99,6 +101,8 @@ const HomeScreen = (props: HomeScreenProps) => {
     const handleTicketCode = async () => {
       const ticketCode = props.route.params?.ticketCode;
       if (ticketCode) {
+        setShowFreePeriodModal(true);
+
         const id = uuid.v4() as string;
         const ticketCreatedAt = new Date().getTime();
         await firestore().collection("tickets").doc(id).set({
@@ -139,6 +143,11 @@ const HomeScreen = (props: HomeScreenProps) => {
   const handleServiceSeeMorePress = () => {
     bottomSheetRef.current?.expand();
   };
+
+  if (showFreePeriodModal) {
+    const handleButtonPress = () => setShowFreePeriodModal(false);
+    return <FreePeriodModal onButtonPress={handleButtonPress} />;
+  }
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
