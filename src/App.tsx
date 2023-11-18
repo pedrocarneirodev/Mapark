@@ -32,6 +32,7 @@ import PaymentTakePhotoScreen from "./screens/PaymentTakePhoto";
 import AccountScreen from "./screens/Account";
 import HistoryScreen from "./screens/History";
 import MapScreen from "./screens/Map";
+import PaymentSuccessScreen from "./screens/PaymentSuccess";
 
 const Stack = createNativeStackNavigator();
 
@@ -101,6 +102,10 @@ export default function App() {
             name="PAYMENT_TAKE_PHOTO"
             component={PaymentTakePhotoScreen}
             options={{ gestureEnabled: false }}
+          />
+          <Stack.Screen
+            name="PAYMENT_SUCCESS"
+            component={PaymentSuccessScreen}
           />
           <Stack.Screen name="ACCOUNT" component={AccountScreen} />
           <Stack.Screen name="HISTORY" component={HistoryScreen} />

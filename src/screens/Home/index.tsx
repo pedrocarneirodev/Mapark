@@ -30,6 +30,7 @@ type HomeScreenProps = {
   route: {
     params: {
       ticketCode: string;
+      resetMode?: boolean;
     };
   };
 };
@@ -129,6 +130,12 @@ const HomeScreen = (props: HomeScreenProps) => {
     handleTicketCode();
   }, [props]);
 
+  useEffect(() => {
+    if (props?.route?.params?.resetMode) {
+      setHomeMode("NORMAL");
+    }
+  }, [props]);
+
   const handleServiceSeeMorePress = () => {
     bottomSheetRef.current?.expand();
   };
@@ -167,7 +174,10 @@ const HomeScreen = (props: HomeScreenProps) => {
                 </>
               )}
             </ImageContainer>
-            <ServicesGridButtons onPressSeeMore={handleServiceSeeMorePress} />
+            <ServicesGridButtons
+              hideSeeMore={homeMode == "NORMAL"}
+              onPressSeeMore={handleServiceSeeMorePress}
+            />
             <View style={{ marginTop: 38 }} />
             <LastActivity />
           </Container>

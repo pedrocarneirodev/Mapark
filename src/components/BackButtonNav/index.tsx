@@ -12,12 +12,12 @@ import Input from "../Input";
 import { useNavigation } from "@react-navigation/native";
 import Back from "../../assets/svg/back.svg";
 
-const BackButtonNav = () => {
+type BackButtonNavProps = { onGoBack?: () => void };
+
+const BackButtonNav = ({ onGoBack }: BackButtonNavProps) => {
   const navigation = useNavigation();
 
-  const isAndroid = Platform.OS === "android";
-
-  const handleGoBack = () => navigation.goBack();
+  const handleGoBack = () => (onGoBack ? onGoBack() : navigation.goBack());
 
   return (
     <>
