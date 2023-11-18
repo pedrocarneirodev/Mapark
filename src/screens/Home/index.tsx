@@ -86,7 +86,7 @@ const HomeScreen = (props: HomeScreenProps) => {
           seconds: format(Math.floor(secondBetweenTimes % 60).toString()),
         });
 
-        if (minutesBetweenTimes < 15) {
+        if (minutesBetweenTimes < 1) {
           setHomeMode("FREE_PERIOD");
         } else {
           setHomeMode("WAITING_PAYMENT");

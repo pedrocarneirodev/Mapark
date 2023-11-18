@@ -1,4 +1,4 @@
-import usePreventGoBack from "../../hooks/usePreventGoBack";
+import firestore from "@react-native-firebase/firestore";
 import { Linking, StatusBar, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -10,15 +10,22 @@ import {
 import PayLineMask from "./components/PayLineMask";
 import BackButtonNav from "../../components/BackButtonNav";
 import { BottomText, TopText } from "./styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const PaymentTakePhotoScreen = () => {
   const { hasPermission, requestPermission } = useCameraPermission();
   const device = useCameraDevice("back");
 
   const codeScanner = useCodeScanner({
-    codeTypes: ["qr", "ean-13"],
-    onCodeScanned: (codes) => {
-      console.log(`Scanned ${codes.length} codes!`);
+    codeTypes: ["qr", "ean-13", "code-128", "code-39"],
+    onCodeScanned: async () => {
+      const existingTicketId = await AsyncStorage.getItem("ticketId");
+      if (existingTicketId) {
+        await firestore().collection("tickets").doc(existingTicketId).delete();
+        await AsyncStorage.removeItem("ticketId");
+
+        // navigatition.navigate sucess ...
+      }
     },
   });
 
