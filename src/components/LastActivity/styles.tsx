@@ -41,9 +41,6 @@ export const Box = styled.View.attrs({
   border-radius: 10px;
   padding: 14px;
   margin-bottom: 18px;
-
-  flex: 1;
-  justify-content: space-between;
 `;
 
 export const GradientBox = styled(LinearGradient)`

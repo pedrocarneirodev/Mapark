@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { TouchableOpacity, View } from "react-native";
 import {
   Title,
@@ -29,30 +30,21 @@ const ServicesGridButtons = (props: ServicesGridButtons) => {
       </Row>
 
       <Row>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("ESTABLISHMENTS")}
-          style={{ flex: 1 }}
-        >
-          <Box>
-            <ParkingIcon />
-            <BoxTitle>Encontrar estacionamento</BoxTitle>
-          </Box>
-        </TouchableOpacity>
-        <TouchableOpacity style={{ flex: 1 }}>
-          <Box>
-            <LockIcon />
-            <BoxTitle>Segurança do automóvel</BoxTitle>
-          </Box>
-        </TouchableOpacity>
-        <TouchableOpacity style={{ flex: 1 }}>
-          <Box>
-            <MapIcon />
-            <BoxTitle>Buscar local de destino</BoxTitle>
-          </Box>
-        </TouchableOpacity>
+        <Box onPress={() => navigation.navigate("ESTABLISHMENTS")}>
+          <ParkingIcon />
+          <BoxTitle>Encontrar estacionamento</BoxTitle>
+        </Box>
+        <Box>
+          <LockIcon />
+          <BoxTitle>Segurança do automóvel</BoxTitle>
+        </Box>
+        <Box>
+          <MapIcon />
+          <BoxTitle>Buscar local de destino</BoxTitle>
+        </Box>
       </Row>
     </View>
   );
 };
 
-export default ServicesGridButtons;
+export default memo(ServicesGridButtons);

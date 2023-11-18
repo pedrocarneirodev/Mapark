@@ -34,7 +34,7 @@ export const Row = styled.View<{ center?: boolean }>`
   gap: 12px;
 `;
 
-export const Box = styled.View.attrs({
+export const Box = styled.TouchableOpacity.attrs({
   shadowColor: "black",
   shadowOffset: {
     width: -5,

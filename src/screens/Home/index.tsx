@@ -1,6 +1,8 @@
 import { Linking, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import firestore from "@react-native-firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
+import uuid from "react-native-uuid";
 
 import Nav from "../../components/Nav";
 import GradientBackground from "../../components/GradientBackground";
@@ -17,13 +19,12 @@ import ServicesGridButtons from "../../components/ServicesGridButtons";
 import LastActivity from "../../components/LastActivity";
 import Button from "../../components/Button";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import ParkingDetailsBottomSheet from "../../components/ParkingDetailsBottomSheet";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useCameraPermission } from "react-native-vision-camera";
 import { requestForegroundPermissionsAsync } from "expo-location";
-
-const MODE: string = "WAITING_PAYMENT"; // "NORMAL" | "FREE_PERIOD"
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type HomeScreenProps = {
   route: {
@@ -36,6 +37,13 @@ type HomeScreenProps = {
 const HomeScreen = (props: HomeScreenProps) => {
   const navigation = useNavigation();
   const bottomSheetRef = useRef<BottomSheet>(null);
+  const [homeMode, setHomeMode] = useState<
+    "WAITING_PAYMENT" | "NORMAL" | "FREE_PERIOD"
+  >("NORMAL");
+  const [freePeriodTimer, setFreePeriodTimer] = useState({
+    minutes: "00",
+    seconds: "00",
+  });
   const { hasPermission, requestPermission } = useCameraPermission();
 
   const askCameraPermission = async () => {
@@ -58,12 +66,67 @@ const HomeScreen = (props: HomeScreenProps) => {
   }, []);
 
   useEffect(() => {
-    const hasTicketCode = props.route.params?.ticketCode;
+    const handleTicketTimer = (ticketCreatedAt: number) => {
+      const interval = setInterval(() => {
+        const timeDiff = ticketCreatedAt - new Date().getTime();
 
-    if (hasTicketCode) {
-      //register in db
-      // update home state
-    }
+        const diffSeconds = timeDiff / 1000;
+        const secondBetweenTimes = Math.abs(diffSeconds);
+        const minutesBetweenTimes = secondBetweenTimes / 60;
+
+        const format = (value: string) => {
+          if (value.length < 2) {
+            value = `0${value}`;
+          }
+          return value;
+        };
+
+        setFreePeriodTimer({
+          minutes: format(Math.floor(minutesBetweenTimes).toString()),
+          seconds: format(Math.floor(secondBetweenTimes % 60).toString()),
+        });
+
+        if (minutesBetweenTimes < 15) {
+          setHomeMode("FREE_PERIOD");
+        } else {
+          setHomeMode("WAITING_PAYMENT");
+          clearInterval(interval);
+        }
+      }, 1000);
+    };
+
+    const handleTicketCode = async () => {
+      const ticketCode = props.route.params?.ticketCode;
+      if (ticketCode) {
+        const id = uuid.v4() as string;
+        const ticketCreatedAt = new Date().getTime();
+        await firestore().collection("tickets").doc(id).set({
+          code: ticketCode,
+          createdAt: ticketCreatedAt,
+        });
+
+        handleTicketTimer(ticketCreatedAt);
+        await AsyncStorage.setItem("ticketId", id);
+        setHomeMode("FREE_PERIOD");
+      } else {
+        const existingTicketId = await AsyncStorage.getItem("ticketId");
+        if (existingTicketId) {
+          const hasValidTicket = await firestore()
+            .collection("tickets")
+            .doc(existingTicketId)
+            .get();
+          if (hasValidTicket.exists) {
+            handleTicketTimer(
+              new Date((hasValidTicket.data() as any).createdAt).getTime()
+            );
+          } else {
+            await AsyncStorage.removeItem("ticketId");
+          }
+        }
+      }
+    };
+
+    handleTicketCode();
   }, [props]);
 
   const handleServiceSeeMorePress = () => {
@@ -83,13 +146,15 @@ const HomeScreen = (props: HomeScreenProps) => {
                 source={require("../../assets/img/progress-bar-white.png")}
                 resizeMode="contain"
               />
-              {MODE == "FREE_PERIOD" && (
+              {homeMode == "FREE_PERIOD" && (
                 <>
-                  <Value hasMarginTop>10:00</Value>
+                  <Value hasMarginTop>
+                    {freePeriodTimer.minutes}:{freePeriodTimer.seconds}
+                  </Value>
                   <Button label="Tempo ativado" variant="success" />
                 </>
               )}
-              {MODE == "WAITING_PAYMENT" && (
+              {homeMode == "WAITING_PAYMENT" && (
                 <>
                   <TotalValueLabel>Valor total:</TotalValueLabel>
                   <Value>R$16,92</Value>

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { TouchableOpacity, View } from "react-native";
 import {
   Title,
@@ -89,4 +90,4 @@ const LastActivity = ({
   );
 };
 
-export default LastActivity;
+export default memo(LastActivity);
