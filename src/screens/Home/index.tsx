@@ -85,11 +85,13 @@ const HomeScreen = (props: HomeScreenProps) => {
         };
 
         setFreePeriodTimer({
-          minutes: format(Math.floor(minutesBetweenTimes).toString()),
-          seconds: format(Math.floor(secondBetweenTimes % 60).toString()),
+          minutes: format((9 - Math.floor(minutesBetweenTimes)).toString()),
+          seconds: format(
+            (60 - Math.floor(secondBetweenTimes % 60)).toString()
+          ),
         });
 
-        if (minutesBetweenTimes < 1) {
+        if (10 - minutesBetweenTimes > 9) {
           setHomeMode("FREE_PERIOD");
         } else {
           setHomeMode("WAITING_PAYMENT");
