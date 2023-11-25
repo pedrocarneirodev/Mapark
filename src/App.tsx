@@ -1,10 +1,10 @@
-import React, { useCallback } from "react";
-import * as ExpoSplashScreen from "expo-splash-screen";
+import React, { useCallback, useEffect } from "react";
 import { LinkingOptions, NavigationContainer } from "@react-navigation/native";
 import {
   NativeStackNavigationOptions,
   createNativeStackNavigator,
 } from "@react-navigation/native-stack";
+import SplashScreenLib from "react-native-splash-screen";
 
 import SplashScreen from "./screens/Splash";
 import LoginScreen from "./screens/Login";
@@ -54,8 +54,6 @@ const defaultScreenOptions: NativeStackNavigationOptions = {
   animation: "slide_from_right",
 };
 
-ExpoSplashScreen.preventAutoHideAsync();
-
 export default function App() {
   const [fontsLoaded] = useFonts({
     Roboto_100Thin,
@@ -74,7 +72,7 @@ export default function App() {
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
-      await ExpoSplashScreen.hideAsync();
+      SplashScreenLib.hide();
     }
   }, [fontsLoaded]);
 
