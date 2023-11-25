@@ -33,6 +33,7 @@ import AccountScreen from "./screens/Account";
 import HistoryScreen from "./screens/History";
 import MapScreen from "./screens/Map";
 import PaymentSuccessScreen from "./screens/PaymentSuccess";
+import PaymentMethodScreen from "./screens/PaymentMethod";
 
 const Stack = createNativeStackNavigator();
 
@@ -109,6 +110,7 @@ export default function App() {
           />
           <Stack.Screen name="ACCOUNT" component={AccountScreen} />
           <Stack.Screen name="HISTORY" component={HistoryScreen} />
+          <Stack.Screen name="PAYMENT_METHOD" component={PaymentMethodScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>

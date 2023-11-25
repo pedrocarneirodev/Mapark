@@ -59,7 +59,7 @@ const PaymentDetailsScreen = () => {
             label="Pagar"
             height={60}
             width={260}
-            onPress={() => navigation.navigate("PAYMENT_TAKE_PHOTO")}
+            onPress={() => navigation.navigate("PAYMENT_METHOD")}
           />
         </BottomContainer>
 
