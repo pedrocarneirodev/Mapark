@@ -35,6 +35,12 @@ O Mapark oferece diversas funcionalidades para melhorar a experiência de estaci
   <img src="https://github.com/lucascustodioCATOLICA/parking/blob/master/Interface/Encontrar%20Vagas/Encontrar%20vagas%20(1).png" width="197" height="426">    <img src="https://github.com/lucascustodioCATOLICA/parking/blob/master/Interface/Encontrar%20Vagas/Encontrar%20vagas%20(2).png" width="197" height="426">  <img src="https://github.com/lucascustodioCATOLICA/parking/blob/master/Interface/Encontrar%20Vagas/Encontrar%20vagas%20(3).png" width="197" height="426">    <img src="https://github.com/lucascustodioCATOLICA/parking/blob/master/Interface/Encontrar%20Vagas/Encontrar%20vagas%20(4).png" width="197" height="426">
 </div><br><br>
 
+2. **Encontrar veículo**: Encontre facilmente seu veículo estacionado sem perder tempo.
+
+<div align="center">
+  <img src="https://github.com/pedrocarneirodev/Mapark/blob/master/Interface/Encontrar%20Carro/Encontrar%20carro%20(1).png" width="197" height="426">    <img src="https://github.com/pedrocarneirodev/Mapark/blob/master/Interface/Encontrar%20Carro/Encontrar%20carro.png" width="197" height="426">
+</div>
+
 3. **Alertas de Segurança**: Receba notificações em caso de furto ou colisão do seu veículo enquanto ele está estacionado.
 
 <div align="center">
@@ -53,11 +59,6 @@ O Mapark oferece diversas funcionalidades para melhorar a experiência de estaci
   <img src="https://github.com/lucascustodioCATOLICA/parking/blob/master/Interface/Inf.Estabelecimento/Mapa%20Coco%20bambu.png" width="197" height="426">    <img src="https://github.com/lucascustodioCATOLICA/parking/blob/master/Interface/Inf.Estabelecimento/Mapa%20Park%20Shopping.png" width="197" height="426">    <img src="https://github.com/lucascustodioCATOLICA/parking/blob/master/Interface/Inf.Estabelecimento/Mapa%20UCB.png" width="197" height="426">
 </div><br><br>
 
-6. **Encontrar veículo**: Encontre facilmente seu veículo estacionado sem perder tempo.
-
-<div align="center">
-  <img src="https://github.com/pedrocarneirodev/Mapark/blob/master/Interface/Encontrar%20Carro/Encontrar%20carro%20(1).png" width="197" height="426">    <img src="https://github.com/pedrocarneirodev/Mapark/blob/master/Interface/Encontrar%20Carro/Encontrar%20carro.png" width="197" height="426">
-</div>
 
 ## Tecnologias Utilizadas
 
